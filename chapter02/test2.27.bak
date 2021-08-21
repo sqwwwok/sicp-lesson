@@ -1,0 +1,7 @@
+#lang sicp
+(define (deep-reverse items)
+  (if (null? items)
+      nil
+      (if (pair? items)
+          (append (deep-reverse (car (reverse items)))
+                  

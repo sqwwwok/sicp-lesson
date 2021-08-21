@@ -1,0 +1,35 @@
+#lang sicp
+(define (square x)
+  (* x x))
+
+(define (prime? n)
+  (find-divisor n 2))
+
+(define (find-divisor n product)
+  (cond ((= (remainder n product) 0) #f)
+        ((< (square product) n) (find-divisor n (+ 1 product)))
+        (else #t)))
+
+(define (time-prime-test n count)
+  (define start-time (runtime))
+  (if (prime? n)
+      ((display (- (runtime) start-time))
+       (display ("***"))
+       (+ count 1))))
+
+(define (odd-product start-num)
+  (if (= (remainder start-num 2) 0)
+      (+ start-num 1)
+      (+ start-num 2)))
+
+(define (test-iter start-num count)
+  (if (< count 4)
+      (time-prime-test (odd-product start-num)
+                       0)
+      (test-iter (odd-product start-num))))
+
+(define (test num)
+  (test-iter num 0))
+                   
+       
+

@@ -1,0 +1,23 @@
+#lang sicp
+(define (cont-frac n d k fixed-k)
+  (define d (d-product (- fixed-k k)))
+  (display d)
+  (newline)
+  (if (= k 1)
+      (/ n d)
+      (/ n (+ d (cont-frac n d (- k 1) fixed-k)))))
+
+(define (fol n d k)
+  (define (fol-iter result count)
+     (if (= count k)
+         result
+         (fol-iter (/ n (+ result d)) (+ count 1))))
+   (fol-iter 0 0))
+
+(define (d-product k)
+  (if (or (= (remainder (+ 1 k) 3) 1) (= (remainder (+ 1 k) 3) 0))
+      1
+      (/ (* 2 (+ k 2)) 3)))
+
+(define (ola k)
+  (cont-frac 1.0 0 k k))

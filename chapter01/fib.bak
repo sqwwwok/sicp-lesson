@@ -1,0 +1,14 @@
+#lang sicp
+(define (even? x)
+  (= (remainder x 2) 0))
+
+(define (fib n)
+  (fib-iter 1 0 0 1 n))
+ 
+   
+(define (fib-iter a b p q n)
+  (cond ((= n 0) a)
+        ((even? n) (fib-iter (+ (* a (+ p q)) (* b q))
+                             (+ (* a q) (* b p))
+                             q
+                             (+ p q))
