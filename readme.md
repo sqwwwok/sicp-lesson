@@ -1,5 +1,5 @@
 # Sicp Lesson
-Lesson for <Structure and interpretation of computer programs>
+Lesson for \< Structure and interpretation of computer programs \>
   
 # Environment
  Racket https://racket-lang.org/
